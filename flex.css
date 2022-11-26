@@ -1,0 +1,51 @@
+/*
+   NÃO USE FLEX SE
+    • Você precisa construir um layout com tamanhos de colunas definidas. 
+    • Você precisa controlar a quantidade de colunas exibidas.
+ */
+
+
+ PROPRIEDADES DO .flex-container
+
+ .flex-container {
+     display: flex;  /*Define que o container se comportará como flexível*/ 
+
+     flex-direction: column;  /*Define o eixo Y (column) como eixo principal, os elementos serão exibidos dessa forma*/ 
+
+     justify-content: flex-start;  /*Alinha os itens do ínicio para o fim do eixo PRINCIPAL*/ 
+     justify-content: flex-end;  /*Alinha os itens do fim para o início do eixo PRINCIPAL*/ 
+     justify-content: center;  /*Alinha os itens no centro do eixo PRINCIPAL*/ 
+     justify-content: space-between;  /*Alinha os itens com espaçamentos iguais entre eles no eixo PRINCIPAL*/ 
+     justify-content: space-around;  /*Alinha os itens com espaçamentos iguais em volta deles no eixo PRINCIPAL*/
+     justify-content: space-evenly;  /*Alinha os itens com espaçamentos igualmente distribuídos no eixo PRINCIPAL*/
+     
+     align-items: flex-start flex-end center 
+                  space-between space-around space-evenly;  /*Mesma ideia de alinhamento, porém no eixo TRANSVERSAL*/
+     align-items: baseline;  /*Alinha os itens a partir de sua própria base central no eixo TRANSVERSAL*/
+     align-items: stretch;  /*Valor padrão. Cobre os espaços vazios no eixo TRANSVERSAL do container*/ 
+
+     align-content: flex-start flex-end center
+                    space-between space-around space-evenly;  /*Alinha todo o conteúdo do container, mesmo que não sejam itens flex, Use quando tiver várias linhas ou colunas*/
+     
+     flex-wrap: wrap;  /*Os itens são forçados a se comportarem como blocos e quebram para a próxima linha/coluna*/ 
+
+     flex-flow: column wrap;  /*Abreviação para flex-direction e flex-wrap*/ 
+}
+
+PROPRIEDADES DOS .flex-items
+
+.flex-items {
+    order: 1;  /*Define a ordem em que um item é exibido no container. Por padrão, os itens são exibidos na ordem que são declarados no HTML*/
+
+    flex-grow: 1;  /*Define a capacidade de expansão de um item. Se esse for o único item, ocupará todo o container.*/
+                    /*Se houverem 2 items, eles dividirão o espaço do container igualmente*/
+                     /*Se um item tiver essa propriedade com o valor 2, ocupará o dobro de espaço dos outros*/
+    
+    flex-shrink: 1;  /*Define a capacidade de encolhimento/limita a expansão de um item. O oposto de flex-grow*/
+    
+    flex-basis: auto; /*Define a largura do item antes de se expandir/encolher. Esse valor faz a largura base ser igual a do próprio item*/
+    flex-basis: 0; /*Se existir grow, o basis tentará manter a mesma largura para todos os itens, independente do conteúdo*/
+    flex-basis: medida em px, em, rem, %...;
+
+    flex: 1 1 auto; /*Abreviação para flex-grow, flex-shrink e flex-basis*/
+}

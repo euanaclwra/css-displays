@@ -1,0 +1,51 @@
+PROPRIEDADES DO .grid-container
+
+.grid-container {
+    display: grid; /*Define que o container se comportará como grade*/
+
+    grid-template-columns: 1fr 1fr 1fr;/*Define quantas COLUNAS o grid terá e o tamanho delas
+                                       Nesse caso, o grid terá 3 colunas com 1fr de largura*/
+    grid-template-columns: repeat(3, 1fr); /*Mesmo caso do anterior, mas evita repetições*/
+    grid-template-columns: [a] 1fr [b] 1fr [c] 1fr; /*Mesmo caso do primeiro, mas dei nome para as colunas*/
+
+    grid-template-rows: 1fr 1fr 1fr; /*Define quantas LINHAS o grid terá e o tamanho delas
+                                     Nesse caso, o grid terá 3 linhas com 1fr de altura*/
+    grid-template-rows: repeat(3, 1fr); /*Mesmo caso do anterior, mas evita repetições*/
+    grid-template-columns: [d] 1fr [e] 1fr [f] 1fr; /*Mesmo caso do primeiro, mas dei nome para as linhas*/
+
+    grid-template-areas: "header header header" /*Cria áreas no layout e dá nome a elas*/
+                         "main main sidebar"
+                         "footer footer footer";
+
+    grid-gap: 10px; /*Define o espaçamento entre linhas e colunas, também é possível declarar separadamente com grid-column-gap e grid-row-gap*/
+    
+    grid-auto-flow: row; /*Define o fluxo automático que um elemento toma quando é adicionado
+                         Esse é o valor padrão, um novo elemento vai para a próxima linha, respeitando as colunas*/
+    grid-auto-flow: column; /*Define o fluxo automático do grid como coluna*/
+
+    direction: ltr; /*Define a ordem de exibição dos itens
+                    Esse é o valor padrão, da esquerda para a direita*/
+    direction: rtl; /*Define a ordem de exibição como da direita para a esquerda (ou seja, inverte a ordem)*/
+}
+
+PROPRIEDADES DO .grid-item
+
+.grid-item {
+    /*----------POSICIONAMENTO OCUPANDO APENAS UMA LINHA/COLUNA----------*/
+    grid-row: 1; /*Determina em qual linha o item ficará*/
+    grid-column: 2; /*Determina em qual coluna o item ficará*/
+
+
+    /*----------POSICIONAMENTO OCUPANDO MAIS DE UMA LINHA/COLUNA----------*/
+    grid-row: 1 / 3; /*Determina em qual linha o item começa e termina, o item sempre terminará na linha ANTERIOR da especificada
+                     Nesse caso, o item ocuparia DUAS linhas, e a terceira seria o limite*/
+    grid-column: 1 / 3; /*Determina em qual coluna o item começa e termina, o item sempre terminará na coluna ANTERIOR da especificada
+                        Nesse caso, o item ocuparia DUAS colunas, e a terceira seria o limite*/
+
+    grid-area: 1 / 2; /*Pode substituir todas as propriedades acima
+                      Sintaxe: linha inicial/coluna inicial/ linha final/ coluna final
+                      Se não definir a linha/coluna final, o item ocupará somente a linha/coluna inicial
+                      Nesse caso, o item ficaria na linha 1, e na coluna 2*/
+    grid-area: 1 / 2 / 1 / 4; /*Nesse caso, o item ficaria na linha 1, ocupando as colunas 2 a 4*/
+    grid-area: "header"; /*Também podemos definir a posição do item com os nomes que criamos na propriedade grid-template-areas*/
+}
